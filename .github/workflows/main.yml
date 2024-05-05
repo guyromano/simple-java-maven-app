@@ -21,5 +21,5 @@ jobs:
       run: docker build --build-arg=VERSION=${{ steps.bump.outputs.version }} -t github:${{ steps.bump.outputs.version }} .
 
     - name: Test container
-      run: docker run -it github:${{ steps.bump.outputs.version }}
+      run: docker run  github:${{ steps.bump.outputs.version }}
 
