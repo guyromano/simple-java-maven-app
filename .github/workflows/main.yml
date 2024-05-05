@@ -17,12 +17,9 @@ jobs:
       with:
         github-token: ${{ secrets.LOGGIN_TOKEN }}
         
-    - name: Export version
-      run: export VERSION=steps.bump.outputs.version
-      
     - name: Build docker image
-      run: docker build --build-arg="VERSION=$VERSION" -t github:$VERSION .
+      run: docker build --build-arg="VERSION=${steps.bump.outputs.version}" -t github:${steps.bump.outputs.version} .
 
     - name: Test container
-      run: docker run -it github:$VERSION
+      run: docker run -it github:${steps.bump.outputs.version}
 
