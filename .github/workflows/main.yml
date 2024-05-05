@@ -22,4 +22,5 @@ jobs:
 
     - name: Test container
       run: docker run  github:${{ steps.bump.outputs.version }}
+        ##
 
